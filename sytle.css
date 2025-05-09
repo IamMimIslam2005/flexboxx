@@ -4,28 +4,38 @@
     box-sizing: border-box;
 }
 
- .container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 1300px;
-      margin: 0 auto;
-      gap: 50px;
-    }
+  .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px; /* Space between the items */
+            max-width: 1300px; /* Set container max width */
+            margin: 0 auto; /* Center the container horizontally */
+        }
 
-    .item {
-      width: 400px;
-      height: 400px;
-      background-color: #f0f0f0;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2em;
-    }
+        .item {
+            flex: 1 1 400px; /* Items will have a base width of 400px */
+            height: 400px;
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 2px solid #ff6347; /* 2px solid border with a color */
+        }
 
-    .item:nth-child(1) { border: 3px solid red; }
-    .item:nth-child(2) { border: 3px solid blue; }
-    .item:nth-child(3) { border: 3px solid green; }
-    .item:nth-child(4) { border: 3px solid orange; }
-    .item:nth-child(5) { border: 3px solid purple; }
-    .item:nth-child(6) { border: 3px solid teal; }
+        /* Optional: Adjust item height (optional) */
+        .item:nth-child(odd) {
+            background-color: lightgreen;
+        }
+
+        /* Make layout responsive */
+        @media (max-width: 1200px) {
+            .item {
+                flex: 1 1 calc(33.333% - 10px); /* Adjust to 3 columns if the container is smaller */
+            }
+        }
+
+        @media (max-width: 800px) {
+            .item {
+                flex: 1 1 100%; /* Stack items into a single column */
+            }
+        }
